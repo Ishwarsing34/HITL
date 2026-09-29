@@ -1,30 +1,89 @@
-# what is HITL 
+# Agentic-Chatbot-APP-CICD-Deployment-with-Github-Actions-on-AWS
+
+### Description: About the deployment
+
+	1. Build docker image of the source code
+
+	2. Push your docker image to docker hub
+
+	3. Launch Your EC2 
+
+	4. Pull Your image from docker hub in EC2
+
+	5. Lauch your docker image in EC2
+
+## 1. Login to AWS console.
+
+## 2. Create IAM user for deployment
+
+	#Policy:
+
+	1. AmazonEC2FullAccess
+
+	
+
+## 3. Create EC2 machine (Ubuntu) 
+
+## 4. Open EC2 and Install docker in EC2 Machine:
+	
+	
+	#optinal
+
+	sudo apt-get update -y
+
+	sudo apt-get upgrade
+	
+	#Install Docker
+
+	curl -fsSL https://get.docker.com -o get-docker.sh
+
+	sudo sh get-docker.sh
+
+	sudo usermod -aG docker ubuntu
+
+	newgrp docker
 
 
-What is HITL
+### Note: Do the port mapping to this port:- 8501
+	
+# 5. Configure EC2 as self-hosted runner:
 
-** HITL (Human-in-the-Loop) ** is a design approach in AI systems where a human
-actively participates at critical points of the AI workflow - either to
-supervise, approve, correct, or guide the model's outout .**
+    setting>actions>runner>new self hosted runner> choose os> then run command one by one
 
-Think of HITL as putting a human "checkpoint" inside an AI pipeline so that important
-decisions are not made autonomously by the model.
 
-** Why HITL Exists ?**
 
-1. To help agentic systems
-2. To add accountability
 
-** HITL ensures :**
 
-* Accuracy
-* Safety
-* Ethical alignment
-* Better user experience
 
-** Common HITL Patterns :**
+# 6. How to add secret keys to GitHub Actions:
 
-* Action Approval Pattern (Approve / Reject Before Execution)
-* Output Review / Edit Pattern
-* Ambiguity Clarification Pattern
-* Escalation Pattern
+
+REGISTRY=docker.io
+
+DOCKER_USERNAME=your-dockerhub-username
+
+DOCKER_PASSWORD=your-dockerhub-access-token
+
+IMAGE_NAME=agentic-chatbot
+
+AWS_ACCESS_KEY_ID=your-aws-access-key
+
+AWS_SECRET_ACCESS_KEY=your-aws-secret-key
+
+AWS_REGION=us-east-1
+
+OPENAI_API_KEY=your-openai-api-key
+
+TAVILY_API_KEY=your-tavily-api-key
+
+OPENWEATHER_API_KEY=your-openweather-api-key
+
+GOOGLE_API_KEY=your-google-api-key
+
+LANGSMITH_TRACING=true
+
+LANGSMITH_ENDPOINT=https://api.smith.langchain.com
+
+LANGSMITH_API_KEY=your-langsmith-api-key
+
+LANGSMITH_PROJECT=agentic-chatbot-project
